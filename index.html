@@ -15,11 +15,14 @@
     <button onclick="add()">=</button>
     <label id="sum"></label>
     <script>
-        function add(){
-            let number1Input = document.getElementById("number1");
-            let number2Input = document.getElementById("number2");
-            let sum = Number(number1Input.value) + Number(number2Input.value)
-            document.getElementById("sum").innerText = sum
+        async function add(){
+            const number1Input = document.getElementById("number1");
+            const number2Input = document.getElementById("number2");
+            let n = number1Input.value;
+            let m = number2Input.value;
+            const response = await fetch("http://localhost:3000/add/" + n + "/" + m);
+            const sum = await response.json();
+            document.getElementById("sum").innerText = sum;
         }
 
     </script>
