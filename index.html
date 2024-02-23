@@ -14,78 +14,105 @@
             text-align: center;
             margin: 5px auto;
         }
-        div {
-            width: 360px;
-            margin: 10px auto;
-        }
-        input{
+
+        input {
             width: 100%;
             height: 24px;
             font-size: 24px;
         }
 
-        #sum{
+        #result {
             font-size: 24px;
             margin: 5px auto;
         }
 
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
     </style>
 </head>
 
 <body>
-    <h1>Arithmetic</h1>
-    <h3>Input up to two numbers, then select an operation to be performed between them</h3>
-    <div>
-        <input type="number" id="number1">
-
-        <button id="ad" onclick="add()">+</button>
-        <button id="sub" onclick="subtract()">-</button>
-        <button id="mult" onclick="multiply()">*</button>
-        <button id="div" onclick="divide()">/</button>
-
-        <input type="number" id="number2">
-        <br>
-        <label id="sum"></label>
-        <script>
-            async function add() {
-                const number1Input = document.getElementById("number1");
-                const number2Input = document.getElementById("number2");
-                let n = number1Input.value;
-                let m = number2Input.value;
-                const response = await fetch("https://arithmetic-service-remehrinpersonal.onrender.com/add/" + n + "/" + m);
-                const sum = await response.json();
-                document.getElementById("sum").innerText = sum;
-            }
-            async function subtract() {
-                const number1Input = document.getElementById("number1");
-                const number2Input = document.getElementById("number2");
-                let n = number1Input.value;
-                let m = number2Input.value;
-                const response = await fetch("https://arithmetic-service-remehrinpersonal.onrender.com/subtract/" + n + "/" + m);
-                const sum = await response.json();
-                document.getElementById("sum").innerText = sum;
-            }
-            async function multiply() {
-                const number1Input = document.getElementById("number1");
-                const number2Input = document.getElementById("number2");
-                let n = number1Input.value;
-                let m = number2Input.value;
-                const response = await fetch("https://arithmetic-service-remehrinpersonal.onrender.com/multiply/" + n + "/" + m);
-                const sum = await response.json();
-                document.getElementById("sum").innerText = sum;
-            }
-            async function divide() {
-                const number1Input = document.getElementById("number1");
-                const number2Input = document.getElementById("number2");
-                let n = number1Input.value;
-                let m = number2Input.value;
-                const response = await fetch("https://arithmetic-service-remehrinpersonal.onrender.com/divide/" + n + "/" + m);
-                const sum = await response.json();
-                document.getElementById("sum").innerText = sum;
-            }
-
-        </script>
+    <div class="row">
+        <div class="column">
+            <section>
+                <h1>Arithmetic</h1>
+                <h3>Input up to two numbers, then select an operation to be performed between them</h3>
+                <input type="number" id="number1">
+                <button id="ad" onclick="add()">+</button>
+                <button id="sub" onclick="subtract()">-</button>
+                <button id="mult" onclick="multiply()">*</button>
+                <button id="div" onclick="divide()">/</button>
+                <input type="number" id="number2">
+                <br>
+                <label id="result"></label>
+            </section>
+        </div>
+        <div class="column">
+            <section>
+                <h1>Prime check</h1>
+                <h3>Number to test:</h3>
+                <input id="numberToTest" />
+                <button onclick="isPrime()">Check</button>
+                <label id="primeCheckResult"></label>
+            </section>
+        </div>
     </div>
+    <script>
+        async function add() {
+            const number1Input = document.getElementById("number1");
+            const number2Input = document.getElementById("number2");
+            let n = number1Input.value;
+            let m = number2Input.value;
+            const response = await fetch("https://arithmetic-service-remehrinpersonal.onrender.com/add/" + n + "/" + m);
+            const sum = await response.json();
+            document.getElementById("result").innerText = sum;
+        }
+        async function subtract() {
+            const number1Input = document.getElementById("number1");
+            const number2Input = document.getElementById("number2");
+            let n = number1Input.value;
+            let m = number2Input.value;
+            const response = await fetch("https://arithmetic-service-remehrinpersonal.onrender.com/subtract/" + n + "/" + m);
+            const sum = await response.json();
+            document.getElementById("result").innerText = sum;
+        }
+        async function multiply() {
+            const number1Input = document.getElementById("number1");
+            const number2Input = document.getElementById("number2");
+            let n = number1Input.value;
+            let m = number2Input.value;
+            const response = await fetch("https://arithmetic-service-remehrinpersonal.onrender.com/multiply/" + n + "/" + m);
+            const sum = await response.json();
+            document.getElementById("result").innerText = sum;
+        }
+        async function divide() {
+            const number1Input = document.getElementById("number1");
+            const number2Input = document.getElementById("number2");
+            let n = number1Input.value;
+            let m = number2Input.value;
+            const response = await fetch("https://arithmetic-service-remehrinpersonal.onrender.com/divide/" + n + "/" + m);
+            const sum = await response.json();
+            document.getElementById("result").innerText = sum;
+        }
+        async function isPrime() {
+            const numberToTest = document.getElementById("numberToTest");
+            let n = numberToTest.value;
+            const response = await fetch("https://primes-service-latest-mn3n.onrender.com/primes/" + n);
+            const result = await response.json();
+            document.getElementById("primeCheckResult").innerText = result;
+        }
+
+    </script>
 </body>
 
 </html>
