@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arithmetic</title>
+    <title>Numbers</title>
     <style>
         button {
             display: block;
@@ -13,6 +13,12 @@
             background-color: skyblue;
             text-align: center;
             margin: 5px auto;
+        }
+        
+        button:hover{
+            cursor: pointer;
+            width: 60px;
+            background-color: rgb(80, 193, 238);
         }
 
         input {
@@ -123,9 +129,9 @@
         async function cipher() {
             const textToCipher = document.getElementById("textToCipher");
             let plainText = textToCipher.value;
-            const response = await fetch("https://ciphers-service-remehrinpersonal.onrender.com" + plainText);
+            const response = await fetch("https://ciphers-service-remehrinpersonal.onrender.com/ciphers/caesar/" + plainText + "/3");
             const result = await response.json();
-            document.getElementById("cipher").innerText = result;
+            document.getElementById("cipher").innerText = result.cipher;
         }
 
     </script>
