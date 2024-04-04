@@ -1,14 +1,14 @@
 const hosts_local = {
-    arithmetic_servoce: "http://localhost:4000",
+    arithmetic_service: "http://localhost:4000",
     primes_service: "http://localhost:8085",
     ciphers_service: "http://localhost:4006",
     quotation_service: "http://localhost:4004"
 };
 
 const hosts_remote = {
-   arithmetic_servoce: "https://arithmetic-service.onrender.com",
-   primes_service: "https://primes-service.onrender.com",
-   ciphers_service: "https://ciphers-service-hbahramian.onrender.com",
+   arithmetic_service: "https://arithmetic-service-remehrinpersonal.onrender.com",
+   primes_service: "https://primes-service-latest-mn3n.onrender.com",
+   ciphers_service: "https://ciphers-service-remehrinpersonal.onrender.com",
    quotation_service: "?"
 };
 
